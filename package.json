@@ -1,0 +1,31 @@
+{
+  "name": "browserify-babelify-experiments",
+  "version": "1.0.0",
+  "description": "experiments with es6 code using those tools...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deostroll/browserify-babelify-experiments.git"
+  },
+  "keywords": [
+    "browserify",
+    "babelify"
+  ],
+  "author": "deostroll",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deostroll/browserify-babelify-experiments/issues"
+  },
+  "homepage": "https://github.com/deostroll/browserify-babelify-experiments#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.4.4",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
