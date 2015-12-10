@@ -39,8 +39,9 @@ function createDestination(target) {
 
 function transpile(mainFile, targetFile) {
   console.log('transpiling...');
+  var prelude = fs.readFileSync('./node_modules/browserify/node_modules/browser-pack/prelude.js', 'utf8');
   return new Promise(function(pass, fail){
-    browserify(mainFile, {deps: true})
+    browserify(mainFile, {deps: true, prelude: prelude})
     .on('error', function(err){
       fail(err);
     })
@@ -50,7 +51,7 @@ function transpile(mainFile, targetFile) {
       fail(err);
     })
     .pipe(fs.createWriteStream(targetFile))
-    .on('close', function(){      
+    .on('close', function(){
       pass();
     });
   });
@@ -58,7 +59,7 @@ function transpile(mainFile, targetFile) {
 
 cleanDestination(targetDest).then(function(){
   return createDestination(targetDest)
-}).then(function(){
+}).then(function(p){
   return transpile('./es6-code/main.js', './dist/main.js');
 }).then(function(){
   fs.readFile('./dist/main.js', {
@@ -72,3 +73,5 @@ cleanDestination(targetDest).then(function(){
   console.log('Message:', err.message);
   console.log('Stack:\n', err.stack);
 })
+
+// cleanDestination(targetDest).then()
